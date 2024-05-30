@@ -37,7 +37,9 @@ function App() {
         <ColorModeContextProvider>
           <AntdApp>
             <Refine
-              dataProvider={dataProvider("http://localhost:3000/api")}
+              dataProvider={dataProvider(
+                "http://ec2-3-28-121-95.me-central-1.compute.amazonaws.com:3000/api"
+              )}
               notificationProvider={useNotificationProvider}
               authProvider={authProvider}
               routerProvider={routerBindings}
