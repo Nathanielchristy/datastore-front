@@ -13,7 +13,7 @@ const Signup = () => {
   const onFinish = async (values: any) => {
     try {
       // Send a POST request to the API endpoint with the form data
-      const response = await fetch("http://localhost:3000/api/app-data", {
+      const response = await fetch("http://3.28.221.102:3000/api/app-data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,19 +83,19 @@ const Signup = () => {
             >
               <Input prefix={<MailOutlined />} placeholder="Email" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="phoneNumber"
               rules={[
                 { required: true, message: "Please input your phone number!" },
               ]}
             >
               <Input prefix={<PhoneOutlined />} placeholder="Phone Number" />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item>
               <Button
                 type="primary"
                 htmlType="submit"
-                style={{ width: "100%" }}
+                style={{ width: "100%", backgroundColor: "rgb(193, 0, 22)" }}
               >
                 Sign Up
               </Button>

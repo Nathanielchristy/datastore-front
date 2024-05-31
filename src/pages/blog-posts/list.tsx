@@ -22,7 +22,7 @@ export const BlogPostList = () => {
         <Table.Column dataIndex="name" title={"First Name"} />
         <Table.Column dataIndex="familyname" title={"Last Name"} />
         <Table.Column dataIndex="email" title={"Email"} />
-        <Table.Column dataIndex="phoneNumber" title={"Phone Number"} />
+        {/* <Table.Column dataIndex="phoneNumber" title={"Phone Number"} /> */}
       </Table>
     </List>
   );
