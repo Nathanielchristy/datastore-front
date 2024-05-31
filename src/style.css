@@ -1,0 +1,33 @@
+/* styles.css */
+.background {
+  background-color: #fdf4e3; /* RAL 9001 */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@font-face {
+  font-family: "BrilliantCut";
+  src: url("./assets/fonts/BrilliantCut-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "BrilliantCut", sans-serif;
+}
+@font-face {
+  font-family: "BrilliantCut";
+  src: url("./assets/fonts/FancyCut-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "BrilliantCut", sans-serif;
+}

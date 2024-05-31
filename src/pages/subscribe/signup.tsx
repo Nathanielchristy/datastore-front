@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Row, Col, Modal } from "antd";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
+import { UserOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+
+import SVGComponent from "./svg";
 
 const Signup = () => {
   const [form] = Form.useForm();
@@ -33,8 +35,9 @@ const Signup = () => {
   };
 
   const handleModalOk = () => {
+    form.resetFields();
     setModalVisible(false);
-    window.location.href = "https://www.instagram.com/";
+    // window.location.href = "https://www.instagram.com/";
   };
 
   const handleModalCancel = () => {
@@ -44,42 +47,60 @@ const Signup = () => {
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={8}>
-        <Form
-          name="signup"
-          onFinish={onFinish}
-          initialValues={{ remember: true }}
-        >
-          <Form.Item
-            name="firstName"
-            rules={[
-              { required: true, message: "Please input your first name!" },
-            ]}
+        <div style={{ textAlign: "center" }}>
+          <SVGComponent></SVGComponent>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <Form
+            name="signup"
+            onFinish={onFinish}
+            initialValues={{ remember: true }}
           >
-            <Input prefix={<UserOutlined />} placeholder="First Name" />
-          </Form.Item>
-          <Form.Item
-            name="lastName"
-            rules={[
-              { required: true, message: "Please input your last name!" },
-            ]}
-          >
-            <Input prefix={<UserOutlined />} placeholder="Last Name" />
-          </Form.Item>
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: "Please input your email!" },
-              { type: "email", message: "Please enter a valid email address!" },
-            ]}
-          >
-            <Input prefix={<MailOutlined />} placeholder="Email" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-              Sign Up
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item
+              name="name"
+              rules={[{ required: true, message: "Please input your Name!" }]}
+            >
+              <Input prefix={<UserOutlined />} placeholder="Name" />
+            </Form.Item>
+            <Form.Item
+              name="familyname"
+              rules={[
+                { required: true, message: "Please input your Family name!" },
+              ]}
+            >
+              <Input prefix={<UserOutlined />} placeholder="Family Name" />
+            </Form.Item>
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: "Please input your email!" },
+                {
+                  type: "email",
+                  message: "Please enter a valid email address!",
+                },
+              ]}
+            >
+              <Input prefix={<MailOutlined />} placeholder="Email" />
+            </Form.Item>
+            <Form.Item
+              name="phoneNumber"
+              rules={[
+                { required: true, message: "Please input your phone number!" },
+              ]}
+            >
+              <Input prefix={<PhoneOutlined />} placeholder="Phone Number" />
+            </Form.Item>
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{ width: "100%" }}
+              >
+                Sign Up
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </Col>
       <Modal
         title="Subscription Successful"

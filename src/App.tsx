@@ -1,5 +1,5 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import React from "react";
+import { Authenticated, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -27,8 +27,9 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import { BlogPostList } from "./pages/blog-posts";
 
 import { Login } from "./pages/login";
-
 import Signup from "./pages/subscribe/signup";
+
+import "./style.css"; // Import the CSS file
 
 function App() {
   return (
@@ -37,9 +38,7 @@ function App() {
         <ColorModeContextProvider>
           <AntdApp>
             <Refine
-              dataProvider={dataProvider(
-                "http://ec2-3-28-121-95.me-central-1.compute.amazonaws.com:3000/api"
-              )}
+              dataProvider={dataProvider("http://localhost:3000/api")}
               notificationProvider={useNotificationProvider}
               authProvider={authProvider}
               routerProvider={routerBindings}
@@ -59,56 +58,58 @@ function App() {
                 projectId: "YKnM2d-ObKIQK-r8lN6l",
               }}
             >
-              <Routes>
-                <Route
-                  element={
-                    <Authenticated
-                      key="authenticated-inner"
-                      fallback={<CatchAllNavigate to="/login" />}
-                    >
-                      <ThemedLayoutV2
-                        Header={() => <Header sticky />}
-                        Sider={(props) => <ThemedSiderV2 {...props} fixed />}
-                        Title={({ collapsed }) => (
-                          <ThemedTitleV2
-                            collapsed={collapsed}
-                            text="Dates Sample"
-                            icon={<AppIcon />}
-                          />
-                        )}
-                      >
-                        <Outlet />
-                      </ThemedLayoutV2>
-                    </Authenticated>
-                  }
-                >
+              <div className="background">
+                <Routes>
                   <Route
-                    index
-                    element={<NavigateToResource resource="app-data" />}
-                  />
-                  <Route path="/app-data">
-                    <Route index element={<BlogPostList />} />
+                    element={
+                      <Authenticated
+                        key="authenticated-inner"
+                        fallback={<CatchAllNavigate to="/login" />}
+                      >
+                        <ThemedLayoutV2
+                          Header={() => <Header sticky />}
+                          Sider={(props) => <ThemedSiderV2 {...props} fixed />}
+                          Title={({ collapsed }) => (
+                            <ThemedTitleV2
+                              collapsed={collapsed}
+                              text="Dates Sample"
+                              icon={<AppIcon />}
+                            />
+                          )}
+                        >
+                          <Outlet />
+                        </ThemedLayoutV2>
+                      </Authenticated>
+                    }
+                  >
+                    <Route
+                      index
+                      element={<NavigateToResource resource="app-data" />}
+                    />
+                    <Route path="/app-data">
+                      <Route index element={<BlogPostList />} />
+                    </Route>
+                    <Route path="*" element={<ErrorComponent />} />
                   </Route>
-                  <Route path="*" element={<ErrorComponent />} />
-                </Route>
-                <Route
-                  element={
-                    <Authenticated
-                      key="authenticated-outer"
-                      fallback={<Outlet />}
-                    >
-                      <NavigateToResource />
-                    </Authenticated>
-                  }
-                >
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/subscribe" element={<Signup />} />
-                </Route>
-              </Routes>
+                  <Route
+                    element={
+                      <Authenticated
+                        key="authenticated-outer"
+                        fallback={<Outlet />}
+                      >
+                        <NavigateToResource />
+                      </Authenticated>
+                    }
+                  >
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/subscribe" element={<Signup />} />
+                  </Route>
+                </Routes>
 
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
+                <RefineKbar />
+                <UnsavedChangesNotifier />
+                <DocumentTitleHandler />
+              </div>
             </Refine>
           </AntdApp>
         </ColorModeContextProvider>
