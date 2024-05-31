@@ -19,9 +19,10 @@ export const BlogPostList = () => {
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="ID" title={"ID"} />
-        <Table.Column dataIndex="firstName" title={"First Name"} />
-        <Table.Column dataIndex="lastName" title={"Last Name"} />
+        <Table.Column dataIndex="name" title={"First Name"} />
+        <Table.Column dataIndex="familyname" title={"Last Name"} />
         <Table.Column dataIndex="email" title={"Email"} />
+        <Table.Column dataIndex="phoneNumber" title={"Phone Number"} />
       </Table>
     </List>
   );

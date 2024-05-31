@@ -37,6 +37,7 @@ const Signup = () => {
   const handleModalOk = () => {
     form.resetFields();
     setModalVisible(false);
+    window.location.reload();
     // window.location.href = "https://www.instagram.com/";
   };
 

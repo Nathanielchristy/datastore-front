@@ -1,17 +1,12 @@
 import { AuthPage, ThemedTitleV2 } from "@refinedev/antd";
 import { AppIcon } from "../../components/app-icon";
+import SVGComponent from "./svg";
 
 export const Login = () => {
   return (
     <AuthPage
       type="login"
-      title={
-        <ThemedTitleV2
-          collapsed={false}
-          text="User Data Collection"
-          icon={<AppIcon />}
-        />
-      }
+      title={<SVGComponent />}
       formProps={{
         initialValues: { email: "demo@demo.com", password: "demodemo" },
       }}
