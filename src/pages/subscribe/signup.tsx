@@ -13,13 +13,16 @@ const Signup = () => {
   const onFinish = async (values: any) => {
     try {
       // Send a POST request to the API endpoint with the form data
-      const response = await fetch("http://3.28.221.102:3000/api/app-data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://datastore-mongo-back.onrender.com/api/app-data",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
       if (response.ok) {
         console.log("Data submitted successfully!");

@@ -38,7 +38,9 @@ function App() {
         <ColorModeContextProvider>
           <AntdApp>
             <Refine
-              dataProvider={dataProvider("http://3.28.221.102:3000/api")}
+              dataProvider={dataProvider(
+                "https://datastore-mongo-back.onrender.com/api"
+              )}
               notificationProvider={useNotificationProvider}
               authProvider={authProvider}
               routerProvider={routerBindings}
