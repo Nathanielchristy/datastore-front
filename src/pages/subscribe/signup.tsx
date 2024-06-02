@@ -51,10 +51,9 @@ const Signup = () => {
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={8}>
-        <Space direction="horizontal" align="center" style={{ width: "100%" }}>
+        <Space direction="vertical" align="center" style={{ width: "100%" }}>
           <SVGComponent></SVGComponent>
-        </Space>
-        <div style={{ textAlign: "center" }}>
+
           <Form
             name="signup"
             onFinish={onFinish}
@@ -104,7 +103,7 @@ const Signup = () => {
               </Button>
             </Form.Item>
           </Form>
-        </div>
+        </Space>
       </Col>
       <Modal
         title="Subscription Successful"
