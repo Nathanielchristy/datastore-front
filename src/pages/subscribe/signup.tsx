@@ -51,7 +51,7 @@ const Signup = () => {
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={8}>
-        <Space>
+        <Space direction="horizontal" align="center" style={{ width: "100%" }}>
           <SVGComponent></SVGComponent>
         </Space>
         <div style={{ textAlign: "center" }}>
