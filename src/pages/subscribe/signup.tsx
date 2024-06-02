@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Row, Col, Modal } from "antd";
+import { Form, Input, Button, Row, Col, Modal, Space } from "antd";
 import { UserOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 
 import SVGComponent from "./svg";
@@ -51,9 +51,9 @@ const Signup = () => {
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <Col span={8}>
-        <div style={{ textAlign: "center" }}>
+        <Space>
           <SVGComponent></SVGComponent>
-        </div>
+        </Space>
         <div style={{ textAlign: "center" }}>
           <Form
             name="signup"
