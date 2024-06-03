@@ -74,7 +74,7 @@ function App() {
                           Title={({ collapsed }) => (
                             <ThemedTitleV2
                               collapsed={collapsed}
-                              text="Dates Sample"
+                              text="Cartier"
                               icon={<AppIcon />}
                             />
                           )}
