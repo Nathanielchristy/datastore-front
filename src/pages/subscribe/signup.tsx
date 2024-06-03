@@ -13,7 +13,7 @@ const Signup = () => {
       setLoading(true); // Set loading to true while waiting for response
       // Send a POST request to the API endpoint with the form data
       const response = await fetch(
-        "https://datastore-mongo-back.onrender.com/api/app-data",
+        "https://service.datesgcc.com/api/app-data",
         {
           method: "POST",
           headers: {
