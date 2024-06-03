@@ -7,9 +7,9 @@ export const Login = () => {
     <AuthPage
       type="login"
       title={<SVGComponent />}
-      formProps={{
-        initialValues: { email: "demo@demo.com", password: "demodemo" },
-      }}
+      // formProps={{
+      //   initialValues: { email: "photographer@photo.com", password: "demodemo" },
+      // }}
     />
   );
 };

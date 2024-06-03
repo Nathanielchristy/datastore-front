@@ -3,9 +3,11 @@ import { AuthBindings } from "@refinedev/core";
 export const TOKEN_KEY = "refine-auth";
 
 export const authProvider: AuthBindings = {
-  login: async ({ username, email, password }) => {
-    if ((username || email) && password) {
-      localStorage.setItem(TOKEN_KEY, username);
+  login: async ({ email, password }) => {
+    const specificEmail = "photographer@photos.com"; // Replace with the specific allowed email
+    const specificPassword = "Photos@123"; // Replace with the specific allowed password
+    if (email === specificEmail && password === specificPassword) {
+      localStorage.setItem(TOKEN_KEY, email);
       return {
         success: true,
         redirectTo: "/",
@@ -46,8 +48,8 @@ export const authProvider: AuthBindings = {
     if (token) {
       return {
         id: 1,
-        name: "User",
-        avatar: "https://i.pravatar.cc/300",
+        name: "Photographer",
+        avatar: "https://i.pravatar.cc/300?img=58",
       };
     }
     return null;
