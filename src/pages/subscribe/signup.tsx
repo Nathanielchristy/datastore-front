@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Row, Col, Modal, Space } from "antd";
-import { UserOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Row, Col, Space } from "antd";
+import { UserOutlined, MailOutlined } from "@ant-design/icons";
 
 import SVGComponent from "./svg";
 
 const Signup = () => {
   const [form] = Form.useForm();
-  const [modalVisible, setModalVisible] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onFinish = async (values: any) => {
     try {
+      setLoading(true); // Set loading to true while waiting for response
       // Send a POST request to the API endpoint with the form data
       const response = await fetch(
         "https://datastore-mongo-back.onrender.com/api/app-data",
@@ -27,25 +26,15 @@ const Signup = () => {
       if (response.ok) {
         console.log("Data submitted successfully!");
         form.resetFields();
-        setModalText("Successful subscription");
-        setModalVisible(true);
+        // You can handle success here if needed
       } else {
         console.error("Failed to submit data:", response.statusText);
       }
     } catch (error) {
       console.error("Error submitting data:", error);
+    } finally {
+      setLoading(false); // Reset loading state regardless of success or failure
     }
-  };
-
-  const handleModalOk = () => {
-    form.resetFields();
-    setModalVisible(false);
-    window.location.reload();
-    // window.location.href = "https://www.instagram.com/";
-  };
-
-  const handleModalCancel = () => {
-    setModalVisible(false);
   };
 
   return (
@@ -56,6 +45,7 @@ const Signup = () => {
 
           <Form
             name="signup"
+            form={form}
             onFinish={onFinish}
             initialValues={{ remember: true }}
           >
@@ -85,35 +75,19 @@ const Signup = () => {
             >
               <Input prefix={<MailOutlined />} placeholder="Email" />
             </Form.Item>
-            {/* <Form.Item
-              name="phoneNumber"
-              rules={[
-                { required: true, message: "Please input your phone number!" },
-              ]}
-            >
-              <Input prefix={<PhoneOutlined />} placeholder="Phone Number" />
-            </Form.Item> */}
             <Form.Item>
               <Button
                 type="primary"
                 htmlType="submit"
                 style={{ width: "100%", backgroundColor: "rgb(193, 0, 22)" }}
+                loading={loading} // Set loading state for the button
               >
-                Sign Up
+                Receive Your Picture
               </Button>
             </Form.Item>
           </Form>
         </Space>
       </Col>
-      <Modal
-        title="Subscription Successful"
-        visible={modalVisible}
-        confirmLoading={confirmLoading}
-        onOk={handleModalOk}
-        onCancel={handleModalCancel}
-      >
-        <p>{modalText}</p>
-      </Modal>
     </Row>
   );
 };
